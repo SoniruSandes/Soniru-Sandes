@@ -2,7 +2,9 @@ document.getElementById('myButton').addEventListener('click', function() {
     alert('Button Clicked!');
 });
 
-document.getElementById('themeSwitcher').addEventListener('click', function() {
+const themeSwitcher = document.querySelector('.theme-switcher');
+
+themeSwitcher.addEventListener('click', () => {
     document.body.classList.toggle('dark');
-    this.innerHTML = document.body.classList.contains('dark') ? '&#9788;' : '&#9728;';
 });
+
