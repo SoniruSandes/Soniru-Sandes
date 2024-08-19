@@ -12,16 +12,62 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">Projects</a></li>
             <li><a href="#">About Me</a></li>
-            <li><a href="#">Contact Me</a></li>
+            <li><a href="#contact">Contact Me</a></li>
         </ul>
         <button id="themeSwitcher" class="theme-switcher">&#9728;</button>
     </nav>
 
     <div class="container">
-        <h1>Hello, World!</h1>
-        <button id="myButton">Click Me</button>
+        <h1>Welcome to Page</h1>
+        <button id="myButton">Youtube Channel 01</button>
     </div>
 
     <script src="script.js"></script>
+
+<section id="contact">
+  
+  <form id="contact-form" style="display: none;">
+    <!-- Form fields go here -->
+    <form action="https://script.google.com/macros/s/AKfycbw7sJPqKm-1ro_qkqlSAPmFIwfUnnpPw4S4_USsBpl_K82PNpNkJFiAyTztUMSfi2c4/exec" method="post">
+  <div>
+    <label for="first-name">First Name:</label>
+    <input type="text" id="first-name" name="firstName" required>
+  </div>
+
+  <div>
+    <label for="second-name">Second Name (Optional):</label>
+    <input type="text" id="second-name" name="secondName">
+  </div>
+
+  <div>
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+
+  <div>
+    <label for="phone-number">Phone Number (Optional):</label>
+    <input type="tel" id="phone-number" name="phoneNumber">
+  </div>
+
+  <div>
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="subject" required>
+  </div>
+
+  <div>
+    <label for="body">Body:</label>
+    <textarea id="body" name="body" required></textarea>
+  </div>
+
+  <button type="submit" class="submit-button">
+    <i class="telegram-icon"></i> Submit
+  </button>
+</form>
+
+
+    
+</section>
+
 </body>
 </html>
+
