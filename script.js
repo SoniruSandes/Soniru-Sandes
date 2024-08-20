@@ -23,7 +23,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     event.preventDefault();
     const formData = new FormData(this);
 
-    fetch('https://docs.google.com/spreadsheets/d/10DaHJXmp0Vf4MebmUTqolovjOVdhK4jzTVlMrVKyzPQ/edit?usp=sharing', {
+    fetch('https://script.google.com/macros/s/AKfycbyYhYkNKJ8TqOzDR0voA-y25MUA-HiF213ThucffF95rY8NGdDCHlnzt2lUoB-ZiW58fA/exec', {
         method: 'POST',
         body: formData,
     })
