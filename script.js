@@ -1,5 +1,5 @@
-document.getElementById('myButton').addEventListener('click', function() {
-    alert('https://youtube.com/@Gaming-Quest-');
+document.getElementById('mechStrike').addEventListener('click', function() {
+    window.open('https://www.youtube.com/channel/UCLZ5j6dU6daEHhOAvLkxEQA?sub_confirmation=1', '_blank');
 });
 
 const themeSwitcher = document.querySelector('.theme-switcher');
@@ -14,25 +14,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
     contactLink.addEventListener('click', function(event) {
         event.preventDefault();
+        showSection('contact');
         contactForm.style.display = 'block';
         window.scrollTo(0, contactForm.offsetTop);
     });
 });
 
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const formData = new FormData(this);
-
-    fetch('https://script.google.com/macros/s/AKfycbyYhYkNKJ8TqOzDR0voA-y25MUA-HiF213ThucffF95rY8NGdDCHlnzt2lUoB-ZiW58fA/exec', {
-        method: 'POST',
-        body: formData,
-    })
-    .then(response => response.text())
-    .then(result => {
-        alert('Form submitted successfully!');
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('There was an error submitting the form.');
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(section => {
+        section.style.display = 'none';
     });
-});
+
+    // Show the selected section
+    document.getElementById(sectionId).style.display = 'block';
+}
+
+// Show "home" section by default
+showSection('home');
