@@ -1,3 +1,4 @@
+
 /* Default (light theme) */
 body {
     font-family: Arial, sans-serif;
@@ -8,10 +9,15 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    padding-top: 150px; /* Space for the fixed navbar */
+    padding-top: 10px; /* Space for the fixed navbar */
     overflow: hidden; /* Remove scrollbars */
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
+body.dark {
+    background-color: #333;/* Dark theme */
+    color: #f4f4f4;
+}
+
 
 .navbar {
     width: 70%; /* Reduced width */
@@ -29,6 +35,10 @@ body {
     transform: translateX(-50%);
     z-index: 1000;
 }
+body.dark .navbar {
+    background-color: rgba(0, 0, 0, 0.8);/* Dark theme */
+}
+
 
 .main-content {
     width: 70%; /* Matches navbar width for consistent layout */
@@ -54,9 +64,15 @@ body {
     font-weight: bold;
     transition: color 0.3s;
 }
+body.dark .navbar ul li a {
+    color: #f4f4f4;/* Dark theme */
+}
 
 .navbar ul li a:hover {
     color: #007BFF;
+}
+body.dark .navbar ul li a:hover {
+    color: #ffcc00;/* Dark theme */
 }
 
 .theme-switcher {
@@ -73,6 +89,10 @@ body {
     align-items: center; /* Center icon vertically */
     margin-right: 10px; /* Add some space to the right */
 	margin-left: 150px;
+}
+body.dark .theme-switcher {
+    background-color: #ffcc00;/* Dark theme */
+    color: #333;
 }
 
 .theme-switcher:hover {
@@ -91,10 +111,18 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
     margin-top: 100px; /* Adjusted for floating navbar */
 }
+body.dark .container {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);/* Dark theme */
+}
+
 
 h1 {
     color: #333;
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+body.dark h1 {
+    color: #f4f4f4;/* Dark theme */
 }
 
 button {
@@ -108,49 +136,18 @@ button {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+body.dark button {
+    background-color: rgb(255, 204, 0);/* Dark theme */
+}
+
+
 button:hover {
     background-color: #0056b3;
 }
-
-/* Dark theme */
-body.dark {
-    background-color: #333;
-    color: #f4f4f4;
-}
-
-body.dark .navbar {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-body.dark .navbar ul li a {
-    color: #f4f4f4;
-}
-
-body.dark .navbar ul li a:hover {
-    color: #ffcc00;
-}
-
-body.dark .theme-switcher {
-    background-color: #ffcc00;
-    color: #333;
-}
-
-body.dark .container {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-body.dark h1 {
-    color: #f4f4f4;
-}
-
-body.dark button {
-    background-color: #ffcc00;
-}
-
 body.dark button:hover {
-    background-color: #ffa500;
+    background-color: #ffa500;/* Dark theme */
 }
+
 
 /* Theme Switch Animation */
 @keyframes theme-switch {
@@ -204,6 +201,7 @@ body:not(.dark) {
     display: none; /* Hidden by default */
 }
 
+
 @media (max-width: 768px) {
     .navbar {
         width: 100%; /* Full width on small screens */
@@ -219,6 +217,7 @@ body:not(.dark) {
         gap: 10px;
     }
 
+    
 }
 .theme-switcher {
     width: 35px;  /* Slightly smaller size for small screens */
@@ -241,6 +240,11 @@ body:not(.dark) {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+body.dark #contact form { /* Dark theme contact form styles */
+    background-color: #444;
+    color: #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
 
 #contact form label {
     display: block;
@@ -248,8 +252,10 @@ body:not(.dark) {
     font-weight: bold;
 }
 
+
 #contact form input[type="text"],
 #contact form input[type="email"],
+#contact form input[type="subject"],
 #contact form textarea {
     width: 850px;
     padding: 10px;
@@ -258,7 +264,7 @@ body:not(.dark) {
     border-radius: 8px;
     resize: none; /* Prevent resizing */
 }
-
+#contact form textarea { height: 100px;} /* Set a fixed height for the textarea */
 #contact form button {
     display: inline-block;
     padding: 10px 20px;
@@ -272,4 +278,67 @@ body:not(.dark) {
 
 #contact form button:hover {
     background-color: #0056b3;
+}
+/* Dark theme contact form styles */
+body.dark #contact form input,
+body.dark #contact form textarea {
+    background-color: #555;
+    color: #e0e0e0;
+    border: 1px solid #666;
+}
+
+body.dark #contact form input::placeholder,
+body.dark #contact form textarea::placeholder {
+    color: #ccc;
+}
+
+body.dark #contact form button {
+    background-color: #ffa500;
+    color: #333;
+}
+
+body.dark #contact form button:hover {
+    background-color: #ffcc00;
+}
+  
+  /* visited link */
+  a:visited {
+    color: #2e2e2e;
+    text-decoration: none;
+  }
+  
+  /* selected link */
+  a:active {
+    color: rgb(255, 204, 0);
+    text-decoration: none;
+  }
+
+  .section {
+    padding-top: 150px; /* Adjust this value based on the height of your navbar */
+}
+
+/* Default link styles */
+a { /* unvisited link */
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Dark theme link styles */
+body.dark a {
+    color: #ffa500;
+}
+
+body.dark a:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+i {
+    font-size: 50px;
+    margin-right: 10px;
 }
