@@ -1,4 +1,5 @@
-document.getElementById('mechStrike').addEventListener('click', function() {
+
+document.getElementById('mechstrike').addEventListener('click', function() {
     window.open('https://www.youtube.com/channel/UCLZ5j6dU6daEHhOAvLkxEQA?sub_confirmation=1', '_blank');
 });
 
@@ -8,17 +9,6 @@ themeSwitcher.addEventListener('click', () => {
     document.body.classList.toggle('dark');
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const contactLink = document.querySelector('a[href="#contact"]');
-    const contactForm = document.getElementById('contact-form');
-
-    contactLink.addEventListener('click', function(event) {
-        event.preventDefault();
-        showSection('contact');
-        contactForm.style.display = 'block';
-        window.scrollTo(0, contactForm.offsetTop);
-    });
-});
 
 function showSection(sectionId) {
     // Hide all sections
