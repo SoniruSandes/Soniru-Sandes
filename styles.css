@@ -300,25 +300,12 @@ body.dark #contact form button {
 body.dark #contact form button:hover {
     background-color: #ffcc00;
 }
-  
-  /* visited link */
-  a:visited {
-    color: #2e2e2e;
-    text-decoration: none;
-  }
-  
-  /* selected link */
-  a:active {
-    color: rgb(255, 204, 0);
-    text-decoration: none;
-  }
-
   .section {
     padding-top: 150px; /* Adjust this value based on the height of your navbar */
 }
 
 /* Default link styles */
-a { /* unvisited link */
+a { 
     color: #007BFF;
     text-decoration: none;
 }
