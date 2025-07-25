@@ -1,91 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="maintenance.ico">
+    <link rel="icon" type="image/x-icon" href="favicon-new.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soniru Sandes</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <meta name="description" content="Working on it">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9231672840115256"
-     crossorigin="anonymous"></script>
-
 </head>
 <body>
     <nav class="navbar">
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="current-page" id="currentPage" style="display: none;">Home</div>
         
+        <ul class="nav-links">
+            <li><a href="#home" onclick="showSection('home')">Home</a></li>
+            <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
+            <li><a href="#about" onclick="showSection('about')">About Me</a></li>
+            <li><a href="#contact" onclick="showSection('contact')">Contact Me</a></li>
+            <li><a href="#social" onclick="showSection('social')">Gallery</a></li>
+        </ul>
         <button id="themeSwitcher" class="theme-switcher">&#9728;</button>
     </nav>
     
-    <div id="home" class="section">
-        <li><a href="#">Home</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">About Me</a></li>
-            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeOHsFz2GNPD7k1RBdaEvOjZVRFIUUTjon-XlziX9fyZchulQ/viewform?usp=sf_link" target="_blank">Contact Me</a>
-        </li>
-    </div>
+    <div class="main-content">
+        <div id="home" class="section">
+            <center><h1>Welcome to my Page</h1></center>
+            <h2 style="font-size: 70px; text-align:center">Be a warrior,<br>Not a worrier</h2>
+        </div>
 
-    <div id="projects" class="section" style="display: none;">
-        <h2>Projects</h2>
-        <p>Details about projects will go here.</p>
-    </div>
+        <div id="projects" class="section" style="display: none;">
+            <h2>Projects</h2>
+            <p>Details about projects will go here.</p>
+            <center><button id="mechstrike">Mech Strike Channel</button><br></center>
+        </div>
 
-    <div id="about" class="section" style="display: none;">
-        <h2>About Me</h2>
-        <p>Information about me will go here.</p>
-    </div>
-
-    <div id="contact" class="section" style="display: none;">
-        <h2>Contact Me</h2>
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSeOHsFz2GNPD7k1RBdaEvOjZVRFIUUTjon-XlziX9fyZchulQ/formResponse" method="post" target="_blank">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="entry.2005620554" required>
+        <div id="about" class="section" style="display: none;">
+            <h2>About Me</h2>
+            <p>Information about me will go here.</p>
             
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="entry.1045781291" required>
-
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="entry.221553138" required>
+                <h2>Social</h2>
+                <center><button id="mechstrike">Mech Strike Channel</button><br><br> 
+                <a href="https://www.youtube.com/@Soniru" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/sonirusandes/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/SoniruSandes" target="_blank"><i class="fab fa-x"></i></a>
+                <a href="https://www.instagram.com/soniru_sandes/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/openwarevault" target="_blank"><i class="fab fa-telegram"></i></a>
+            </center>
             
-            <label for="message">Message:</label>
-            <textarea id="message" name="entry.839337160" required></textarea>
-            
-            <center><button type="submit">Submit  <i class="fas fa-paper-plane" style="font-size: 0.8em;"></i></button></center>
-        </form>
-    </div>
+        </div>
 
-    <div id="social" class="section" style="display: none;">
-        <h2>Social</h2>
-        <center><button id="mechstrike">Mech Strike Channel</button><br><br>
-        <a href="https://www.youtube.com/@Soniru" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.facebook.com/sonirusandes/" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://x.com/SoniruSandes" target="_blank"><i class="fab fa-x"></i></a>
-        <a href="https://www.instagram.com/soniru_sandes/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://t.me/openwarevault" target="_blank"><i class="fab fa-telegram"></i></a>
-    </center>
-    </div>
+        <div id="contact" class="section" style="display: none;">
+            <h2>Contact Me</h2>
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeOHsFz2GNPD7k1RBdaEvOjZVRFIUUTjon-XlziX9fyZchulQ/formResponse" method="post" target="_blank">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="entry.2005620554" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="entry.1045781291" required>
 
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="entry.221553138" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="entry.839337160" required></textarea>
+                
+                <center><button type="submit">Submit  <i class="fas fa-paper-plane" style="font-size: 0.8em;"></i></button></center>
+            </form>
+        </div>
+    </div>
+    <div id="social" class="section" style="display: none;"></div>
+
+    <footer>
+        <p>&copy; 2025 <a href="https://soniru.vercel.app/">Soniru Sandes</a></p>
+        <a href="https://www.facebook.com/sonirusandes/" target="_blank"><i class="fab fa-facebook" style="font-size: 30px;"></i></a>
+        <a href="https://x.com/SoniruSandes" target="_blank"><i class="fab fa-x" style="font-size: 30px"></i> </i></a>
+        <a href="https://www.instagram.com/soniru_sandes/" target="_blank"><i class="fab fa-instagram" style="font-size: 30px;"></i></a>
+        <a href="https://t.me/openwarevault" target="_blank"><i class="fab fa-telegram" style="font-size: 30px;"></i></a>
+        <a href="https://www.youtube.com/@Soniru" target="_blank"><i class="fab fa-youtube" style="font-size: 30px;"></i></a>
+    </footer>
 
     <script src="script.js"></script>
-    
-    <center>
-<footer>
-    <p>&copy; 2025 <a href="https://soniru.vercel.app/">Soniru Sandes</a></p>
-</footer>
-    </center>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9231672840115256"
-     crossorigin="anonymous"></script>
-<!-- Ad number 1 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9231672840115256"
-     data-ad-slot="4898258404"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 </body>
 </html>
