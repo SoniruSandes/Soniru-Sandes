@@ -1,8 +1,8 @@
-/* Default (light theme) */
+/* ------------------- All body ------------------- */
 body {
     font-family: Arial, sans-serif;
-    background-color: #e0e0e0;
-    color: #333;
+    background: url('texture.jpg') center center / cover no-repeat fixed;
+    color: #0b0b0b;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,72 +10,165 @@ body {
     margin: 0;
     padding-top: 10px; /* Space for the fixed navbar */
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-    overflow: hidden; /* Remove scrollbars */
-
+    overflow-x: hidden; /* Remove scrollbars */
 }
+
+/* ------------------- All body dark ------------------- */
 body.dark {
-    background-color: #333;/* Dark theme */
+    background: url('texture.jpg') center center / cover no-repeat fixed, #333;
     color: #f4f4f4;
+    animation: theme-switch 0.5s ease-in-out;
+}
+body:not(.dark) {
+    animation: theme-switch 0.5s ease-in-out;
 }
 
+/* ------------------- @media -- mobile version look ------------------- */
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%;
+        padding: 10px;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+        position: fixed;
+        z-index: 1001;
+    }
+    .hamburger {
+        display: none;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        z-index: 1002;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background: linear-gradient(120deg, rgba(255,255,255,0.95) 0%, rgba(240,240,255,0.92) 100%);
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        padding: 20px 0;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+        border-radius: 0 0 18px 18px;
+        z-index: 1001;
+    }
+    body.dark .nav-links {
+        background: linear-gradient(120deg, rgba(30,30,40,0.98) 0%, rgba(60,60,80,0.96) 100%);
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .theme-switcher {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        z-index: 1002;
+    }
+    .current-page {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: show;
+    }
+    .social-glass {
+        padding: 20px 0 20px 0;
+        max-width: 98vw;
+    }
+    .social-icons {
+        gap: 18px;
+    }
+    .social-icons a i {
+        font-size: 40px;
+    }
+    .mechstrike-btn {
+        font-size: 16px;
+        padding: 10px 18px;
+    }
+}
+
+/* ------------------- nav bar (default and dark) ------------------- */
 .navbar {
-    width: 70%; /* Reduced width */
-    background-color: rgba(255, 255, 255, 0.8);
+    width: 70%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.7) 0%, rgba(240,240,255,0.6) 100%);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
     padding: 30px 20px;
     display: flex;
-    justify-content: space-between; /* Space between nav items and theme switcher */
+    backdrop-filter: blur(18px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.25);
+    justify-content: space-between;
     align-items: center;
-    border-radius: 16px 16px 16px 16px;
-    position: fixed; /* Keep the navbar fixed at the top */
+    border-radius: 16px;
+    position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
 }
 body.dark .navbar {
-    background-color: rgba(0, 0, 0, 0.8);/* Dark theme */
+    background-color: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(120deg, rgba(30,30,40,0.7) 0%, rgba(60,60,80,0.6) 100%);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
-.nav-links {
-    display: flex;
-    gap: 20px;
-}
-
+/* Liquid highlight bubble for nav bar */
 .navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
     gap: 20px;
+    position: relative;
+}
+.navbar ul .liquid-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #ffcc00 0%, #ffa500 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 16px #ffcc0088;
+    z-index: 0;
+    transition: width 0.5s cubic-bezier(.4,0,.2,1), left 0.5s cubic-bezier(.4,0,.2,1);
+    opacity: 0.7;
+    pointer-events: none;
 }
 
+/* Nav links */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
 .navbar ul li a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
     transition: color 0.3s;
+    position: relative;
+    z-index: 1;
 }
 body.dark .navbar ul li a {
-    color: #f4f4f4;/* Dark theme */
+    color: #f4f4f4;
 }
-
 .navbar ul li a:hover {
     color: #007BFF;
 }
- /* Active link styles */
 .navbar ul li a.active {
-    color: #007BFF; /* Change this to your desired color */
+    color: #007BFF;
 }
-
 body.dark .navbar ul li a:hover {
-    color: #ffcc00;/* Dark theme */
+    color: #ffcc00;
 }
 body.dark .navbar ul li a.active {
-    color: #ffcc00; /* Change this to your desired color for dark theme */
+    color: #ffcc00;
 }
 
+/* ------------------- theme switch ------------------- */
 .theme-switcher {
     font-size: 24px;
     border: none;
@@ -83,69 +176,40 @@ body.dark .navbar ul li a.active {
     background-color: #333;
     color: white;
     cursor: pointer;
-    width: 40px;  /* Adjusted size */
-    height: 40px; /* Adjusted size */
+    width: 40px;
+    height: 40px;
     display: flex;
-    justify-content: center; /* Center icon horizontally */
-    align-items: center; /* Center icon vertically */
-    margin-right: 10px; /* Add some space to the right */
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
 }
 body.dark .theme-switcher {
-    background-color: #ffcc00;/* Dark theme */
+    background-color: #ffcc00;
     color: #333;
 }
-
 .theme-switcher:hover {
     background-color: #555;
     transform: rotate(20deg);
 }
 
+/* ------------------- 5. hamburger ------------------- */
 .hamburger {
-    display: none; /* Hidden by default */
+    display: none;
     cursor: pointer;
     position: absolute;
-    left: 20px; /* Shift to the left side */
+    left: 20px;
 }
 .hamburger i {
     font-size: 24px;
     color: #333;
 }
 body.dark .hamburger i {
-    color: #f4f4f4; /* Dark theme */
+    color: #f4f4f4;
 }
 
-.current-page {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-}
-body.dark .current-page {
-    color: #f4f4f4; /* Dark theme */
-}
-
-.container {
-    text-align: center;
-    padding: 20px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    margin-top: 100px; /* Adjusted for floating navbar */
-}
-body.dark .container {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.2);/* Dark theme */
-}
-
-h1 {
-    color: #333;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
-}
-body.dark h1 {
-    color: #f4f4f4;/* Dark theme */
-}
-
-button {
+/* ------------------- all buttons except contact and social page ------------------- */
+button,
+.submit-button {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -154,17 +218,235 @@ button {
     color: white;
     cursor: pointer;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-
-body.dark button {
-    background-color: rgb(255, 204, 0);/* Dark theme */
+body.dark button,
+body.dark .submit-button {
+    background-color: rgb(255, 204, 0);
 }
-
-button:hover {
+button:hover,
+.submit-button:hover {
     background-color: #0056b3;
 }
-body.dark button:hover {
-    background-color: #ffa500;/* Dark theme */
+body.dark button:hover,
+body.dark .submit-button:hover {
+    background-color: #ffa500;
+}
+
+/* Material 3 bounce effect for buttons */
+button:active,
+.submit-button:active {
+    animation: bounce-material 0.4s cubic-bezier(.4,0,.2,1);
+}
+@keyframes bounce-material {
+    0%   { transform: scale(1); }
+    20%  { transform: scale(1.08); }
+    40%  { transform: scale(0.96); }
+    60%  { transform: scale(1.04); }
+    80%  { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+
+/* ------------------- Everything for contact page ------------------- */
+/* Contact Form Styles Apple glass */
+#contact form {
+    width: 90vw;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 40px;
+    background: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(240,240,255,0.12) 100%);
+    border-radius: 18px;
+    box-shadow: 0 0 24px rgba(31,38,135,0.12);
+    backdrop-filter: blur(18px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+body.dark #contact form {
+    background: linear-gradient(120deg, rgba(30,30,40,0.65) 0%, rgba(60,60,80,0.55) 100%);
+    color: #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+#contact form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+#contact form input[type="text"],
+#contact form input[type="email"],
+#contact form input[type="subject"],
+#contact form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(200,200,200,0.18);
+    background: linear-gradient(120deg, rgba(255,255,255,0.7) 0%, rgba(240,240,255,0.6) 100%);
+    box-shadow: 0 2px 8px rgba(31,38,135,0.08);
+    resize: none;
+    font-size: 16px;
+}
+#contact form textarea { height: 100px;}
+#contact form button {
+    display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(120deg, #007aff 0%, #00c6ff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    transition: background 0.2s;
+}
+#contact form button:hover {
+    background: linear-gradient(120deg, #0056b3 0%, #007aff 100%);
+}
+body.dark #contact form input,
+body.dark #contact form textarea {
+    background: linear-gradient(240deg, rgba(29,29,36,0.7) 0%, rgba(46,46,60,0.6) 100%);
+    color: #e0e0e0;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+body.dark #contact form input::placeholder,
+body.dark #contact form textarea::placeholder {
+    color: #ccc;
+}
+body.dark #contact form button {
+    background: linear-gradient(120deg, #ffa500 0%, #ffd700 100%);
+    color: #222;
+}
+body.dark #contact form button:hover {
+    background: linear-gradient(120deg, #ffd700 0%, #ffa500 100%);
+}
+
+/* ------------------- Everything for social page ------------------- */
+.social-glass {
+    background: linear-gradient(120deg, rgba(30,30,40,0.7) 0%, rgba(60,60,80,0.5) 100%);
+    backdrop-filter: blur(18px) saturate(180%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.35);
+    padding: 30px 40px 40px 40px;
+    margin: 40px auto 0 auto;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.12);
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.social-icons a i {
+    font-size: 70px;
+    color: #ffcc00;
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.2s;
+    filter: drop-shadow(0 2px 8px rgba(255,204,0,0.3));
+}
+.social-icons a:hover i {
+    /* Randomized rotation direction for round icons */
+    transform: scale(1.70) rotate(-10deg);
+    box-shadow: 0 4px 16px #ffcc0088;
+}
+.social-icons a:active i {
+    transform: scale(1.00) rotate(10deg);
+    box-shadow: 0 4px 16px #e7bb0deb;
+}
+
+.mechstrike-btn {
+    background: linear-gradient(120deg, #ffcc00 0%, #ffa500 100%);
+    color: #333;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 14px 40px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 2px 10px #ffcc0055;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.mechstrike-btn:hover {
+    background: linear-gradient(120deg, #ffa500 0%, #ffcc00 100%);
+    box-shadow: 0 4px 18px #ffcc0088;
+}
+
+/* ------------------- Other ------------------- */
+/* Section padding for all pages */
+.section {
+    padding-top: 150px;
+}
+
+/* Default link styles */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover {
+    color: #0056b3;
+}
+body.dark a {
+    color: #ffa500;
+}
+body.dark a:hover {
+    color: #ffcc00;
+}
+
+/* Icon style */
+i {
+    font-size: 50px;
+    margin-right: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(120deg, rgba(255,255,255,0.7) 0%, rgba(240,240,255,0.6) 100%);
+    backdrop-filter: blur(14px) saturate(180%);
+    padding: 10px;
+    text-align: center;
+    width: 70%;
+    box-shadow: 0 -2px 16px rgba(31,38,135,0.10);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 16px 16px 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+body.dark footer {
+    background-color: rgb(0, 0, 0.5);
+    background: linear-gradient(120deg, rgba(30,30,40,0.7) 0%, rgba(60,60,80,0.6) 100%);
+    box-shadow: 0 -2px 16px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Slide down animation */
+footer.hide {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+}
+/* Slide up animation */
+footer.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
 }
 
 /* Theme Switch Animation */
@@ -183,217 +465,6 @@ body.dark button:hover {
     }
 }
 
-body.dark {
-    animation: theme-switch 0.5s ease-in-out;
-}
+/* For mobile view*/
+/* End of mobile view*/
 
-body:not(.dark) {
-    animation: theme-switch 0.5s ease-in-out;
-}
-
-.submit-button {
-    background-color: #0088cc;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px; /* Space between text and icon */
-}
-
-.submit-button .telegram-icon {
-    width: 20px;
-    height: 20px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg');
-    background-size: cover;
-}
-
-.submit-button:hover {
-    background-color: #006db3;
-}
-#contact-form {
-    display: none; /* Hidden by default */
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        width: 100%; /* Full width on small screens */
-        padding: 10px;
-        top: 0; /* Position it at the very top */
-        left: 0;
-        transform: none; /* Remove centering transform */
-        border-radius: 0; /* Remove rounded corners */
-    }
-
-    .nav-links {
-        display: none; /* Hide links by default */
-        flex-direction: column; /* Stack menu items vertically */
-        gap: 10px;
-        background-color: rgba(255, 255, 255, 0.9);
-        position: absolute;
-        top: 60px; /* Adjust based on navbar height */
-        left: 0;
-        width: 100%;
-        padding: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    body.dark .nav-links {
-        background-color: rgba(0, 0, 0, 0.9); /* Dark theme */
-    }
-
-    .nav-links.active {
-        display: flex; /* Show links when active */
-    }
-
-    .hamburger {
-        display: block; /* Show hamburger menu */
-    }
-
-    .theme-switcher {
-        margin-right: 10px; /* Align to the right */
-        position: absolute;
-        right: 20px; /* Shift to the right side */
-    }
-
-    .current-page {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        display: show;
-    }
-    
-}
-
-/* Contact Form Styles */
-#contact form {
-    width: 900px;
-    margin: 20 auto;
-    padding: 40px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-body.dark #contact form { /* Dark theme contact form styles */
-    background-color: #444;
-    color: #e0e0e0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-#contact form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-#contact form input[type="text"],
-#contact form input[type="email"],
-#contact form input[type="subject"],
-#contact form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    resize: none; /* Prevent resizing */
-}
-#contact form textarea { height: 100px;} /* Set a fixed height for the textarea */
-#contact form button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: 2px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-#contact form button:hover {
-    background-color: #0056b3;
-}
-/* Dark theme contact form styles */
-body.dark #contact form input,
-body.dark #contact form textarea {
-    background-color: #555;
-    color: #e0e0e0;
-    border: 1px solid #666;
-}
-
-body.dark #contact form input::placeholder,
-body.dark #contact form textarea::placeholder {
-    color: #ccc;
-}
-
-body.dark #contact form button {
-    background-color: #ffa500;
-    color: #333;
-}
-
-body.dark #contact form button:hover {
-    background-color: #ffcc00;
-}
-
-.section {
-    padding-top: 150px; /* Adjust this value based on the height of your navbar */
-}
-
-/* Default link styles */
-a { /* unvisited link */
-    color: #007BFF;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #0056b3;
-}
-
-/* Dark theme link styles */
-body.dark a {
-    color: #ffa500;
-}
-
-body.dark a:hover {
-    color: #ffcc00;
-}
-
-i {
-    font-size: 50px;
-    margin-right: 10px;
-}
-
-footer {
-    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Blur effect */
-    padding: 10px;
-    text-align: center;
-    width: 70%; /* Full width */
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 16px 16px 0 0;
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-body.dark footer {
-    background-color: rgb(0, 0, 0.5); /* Dark theme */
-}
-
-/* Slide down animation */
-footer.hide {
-    transform: translateX(-50%) translateY(100%);
-    opacity: 0;
-    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out; /* Increased duration and smoother easing */
-}
-
-/* Slide up animation */
-footer.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out; /* Increased duration and smoother easing */
-}
