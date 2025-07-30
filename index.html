@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="icon" type="image/x-icon" href="favicon-new.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soniru Sandes</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
+
     <nav class="navbar">
         <div class="hamburger" id="hamburger">
             <i class="fas fa-bars"></i>
@@ -20,42 +23,50 @@
             <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
             <li><a href="#about" onclick="showSection('about')">About Me</a></li>
             <li><a href="#contact" onclick="showSection('contact')">Contact Me</a></li>
-            <li><a href="#social" onclick="showSection('social')">Gallery</a></li>
+            <li><a href="#gallery" onclick="showSection('gallery')">Gallery</a></li>
         </ul>
+        <span class="current-page-mobile" id="currentPageMobile"></span>
         <button id="themeSwitcher" class="theme-switcher">&#9728;</button>
     </nav>
     
     <div class="main-content">
+
         <div id="home" class="section">
             <center><h1>Welcome to my Page</h1></center>
-            <h2 style="font-size: 70px; text-align:center">I am Soniru<br>Web Developer<br></h2><center><h5>MAYBE</h5></center>
+            <h2 style="font-size: 70px; text-align:center">I am Soniru<br>Web Developer<br></h2>
         </div>
 
         <div id="projects" class="section" style="display: none;">
             <h2>Projects</h2>
-            <p>I haven't got lots of project -- just this can public <br> This is your go-to destination for Mech Arena gameplay and excitement. <br>Dive into the world of robotic combat with intense battles, epic moments, and strategic gameplay. </p>
+                <p>I haven't got lots of project -- just this can public <br> This is your go-to destination for Mech Arena gameplay and excitement. <br>Dive into the world of robotic combat with intense battles, epic moments, and strategic gameplay. </p>
             <center><button id="mechstrike"> Mech Strike Channel</button><br></center>
         </div>
 
+        
         <div id="about" class="section" style="display: none;">
             <h2>About Me</h2>
-            <p>All social platforms</p>
+            <p>Everything about me will go here</p>
+        
+            <!--Social Part (not a different page -- in the about)-->
             <h2>Social</h2>
-        <div class="social-glass">
-        <div class="social-icons">
-            <a href="https://www.youtube.com/@Soniru" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.instagram.com/soniru_sandes/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/sonirusandes/" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://discordapp.com/users/sonirusandes" target="_blank"><i class="fab fa-discord"></i></a> 
-            <a href="https://x.com/SoniruSandes" target="_blank"><i class="fab fa-x"></i></a>
-            <a href="https://t.me/openwarevault" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://www.linkedin.com/in/soniru-sandes-598483360/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.twitch.tv/sonirugaming" target="_blank"><i class="fab fa-twitch"></i></a>
+                <p>These are the all social platforma that I am available</p>
+            <div class="social">
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@Soniru" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/soniru_sandes/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/sonirusandes/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://discordapp.com/users/sonirusandes" target="_blank"><i class="fab fa-discord"></i></a> 
+                    <a href="https://x.com/SoniruSandes" target="_blank"><i class="fab fa-x"></i></a>
+                    <a href="https://t.me/openwarevault" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.linkedin.com/in/soniru-sandes-598483360/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.twitch.tv/sonirugaming" target="_blank"><i class="fab fa-twitch"></i></a>
+                </div>
+                <button id="mechstrike" class="mechstrike-btn">Mech Strike Channel</button>
+            </div>
         </div>
-            <button id="mechstrike" class="mechstrike-btn">Mech Strike Channel</button>
-        </div>
-        </div>
+        
 
+        <!--Contact me Form and Page-->
         <div id="contact" class="section" style="display: none;">
             <h2>Contact Me</h2>
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSeOHsFz2GNPD7k1RBdaEvOjZVRFIUUTjon-XlziX9fyZchulQ/formResponse" method="post" target="_blank">
@@ -74,18 +85,26 @@
                 <center><button type="submit">Submit  <i class="fas fa-paper-plane" style="font-size: 0.8em;"></i></button></center>
             </form>
         </div>
-    </div>
-    <div id="social" class="section" style="display: none;"></div>
 
-    <footer>
+
+        <!--Gallery page-->
+        <div id="gallery" class="section" style="display: none;">
+            <h3>This is the Gallery of images and download media</h3>
+        </div>
+    </div>
+
+    <footer div class="footer">
         <p>&copy; 2025 <a href="https://soniru.vercel.app/">Soniru Sandes</a></p>
+        <div class="icon">
         <a href="https://www.facebook.com/sonirusandes/" target="_blank"><i class="fab fa-facebook" style="font-size: 30px;"></i></a>
         <a href="https://x.com/SoniruSandes" target="_blank"><i class="fab fa-x" style="font-size: 30px"></i> </i></a>
         <a href="https://www.instagram.com/soniru_sandes/" target="_blank"><i class="fab fa-instagram" style="font-size: 30px;"></i></a>
-        <a href="https://t.me/openwarevault" target="_blank"><i class="fab fa-telegram" style="font-size: 30px;"></i></a>
-        <a href="https://www.youtube.com/@Soniru" target="_blank"><i class="fab fa-youtube" style="font-size: 30px;"></i></a>
+        <a href="https://www.youtube.com/@mechstrike" target="_blank"><i class="fab fa-youtube" style="font-size: 30px;"></i></a>
+        </div>
     </footer>
 
     <script src="script.js"></script>
+
 </body>
+
 </html>
