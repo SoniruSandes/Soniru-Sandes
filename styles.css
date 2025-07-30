@@ -1,8 +1,9 @@
 /* ------------------- All body ------------------- */
 body {
     font-family: Arial, sans-serif;
+    max-height: 97vh;
     background: url('texture.jpg') center center / cover no-repeat fixed;
-    color: #0b0b0b;
+    color: #2e2e2e;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +17,7 @@ body {
 /* ------------------- All body dark ------------------- */
 body.dark {
     background: url('texture.jpg') center center / cover no-repeat fixed, #333;
-    color: #f4f4f4;
+    color: #000000;
     animation: theme-switch 0.5s ease-in-out;
 }
 body:not(.dark) {
@@ -35,18 +36,47 @@ body:not(.dark) {
         position: fixed;
         z-index: 1001;
     }
-    .hamburger {
-        display: none;
-        position: absolute;
-        left: 20px;
-        top: 20px;
-        z-index: 1002;
+    .section{
+        padding: 20px;
+        padding-top: 100px;
+        padding-bottom: 100px;
     }
+
+    .hamburger {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 1003;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .hamburger i {
+        font-size: 24px;
+        color: #333;
+    }
+
+    body.dark .hamburger {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    body.dark .hamburger i {
+        color: #ffcc00;
+    }
+
     .nav-links {
-        display: none;
+        display: none !important;
         flex-direction: column;
         gap: 10px;
-        background: linear-gradient(120deg, rgba(255,255,255,0.95) 0%, rgba(240,240,255,0.92) 100%);
+        background: linear-gradient(120deg, rgba(220,235,255,0.85) 0%, rgba(180,210,255,0.7) 100%);
+        backdrop-filter: blur(18px) saturate(180%);
+        -webkit-backdrop-filter: blur(18px) saturate(180%);
         position: fixed;
         top: 60px;
         left: 0;
@@ -55,12 +85,16 @@ body:not(.dark) {
         box-shadow: 0 4px 24px rgba(0,0,0,0.18);
         border-radius: 0 0 18px 18px;
         z-index: 1001;
-    }
-    body.dark .nav-links {
-        background: linear-gradient(120deg, rgba(30,30,40,0.98) 0%, rgba(60,60,80,0.96) 100%);
+        border: 1px solid rgba(180,210,255,0.18);
     }
     .nav-links.active {
-        display: flex;
+        display: flex !important;
+    }
+    body.dark .nav-links {
+        background: linear-gradient(120deg, rgba(30,40,60,0.88) 0%, rgba(60,80,120,0.82) 100%);
+        backdrop-filter: blur(18px) saturate(180%);
+        -webkit-backdrop-filter: blur(18px) saturate(180%);
+        border: 1px solid rgba(255,255,255,0.08);
     }
     .theme-switcher {
         position: absolute;
@@ -74,7 +108,25 @@ body:not(.dark) {
         transform: translateX(-50%);
         display: show;
     }
-    .social-glass {
+    .current-page-mobile {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 16px;
+        transform: translateX(-50%);
+        font-weight: bold;
+        font-size: 18px;
+        color: #007aff;
+        z-index: 1002;
+        background: none;
+        pointer-events: none;
+        text-shadow: 0 2px 8px #fff, 0 1px 0 #e0eaff;
+    }
+    body.dark .current-page-mobile {
+        color: #ffcc00;
+        text-shadow: 0 2px 8px #222, 0 1px 0 #222;
+    }
+    .social {
         padding: 20px 0 20px 0;
         max-width: 98vw;
     }
@@ -87,6 +139,12 @@ body:not(.dark) {
     .mechstrike-btn {
         font-size: 16px;
         padding: 10px 18px;
+    }
+    
+}
+@media (min-width: 769px) {
+    .current-page-mobile {
+        display: none;
     }
 }
 
@@ -139,7 +197,7 @@ body.dark .navbar {
     pointer-events: none;
 }
 
-/* Nav links */
+/* Links */
 .nav-links {
     display: flex;
     gap: 20px;
@@ -192,22 +250,20 @@ body.dark .theme-switcher {
     transform: rotate(20deg);
 }
 
-/* ------------------- 5. hamburger ------------------- */
+/* ------------------- hamburger ------------------- */
 .hamburger {
     display: none;
-    cursor: pointer;
-    position: absolute;
-    left: 20px;
 }
+
 .hamburger i {
-    font-size: 24px;
+    font-size: 28px;
     color: #333;
 }
 body.dark .hamburger i {
     color: #f4f4f4;
 }
 
-/* ------------------- all buttons except contact and social page ------------------- */
+/* ------------------- all buttons except #contact and social page ------------------- */
 button,
 .submit-button {
     padding: 10px 20px;
@@ -247,13 +303,13 @@ button:active,
     100% { transform: scale(1); }
 }
 
-/* ------------------- Everything for contact page ------------------- */
-/* Contact Form Styles Apple glass */
+/* ------------------- Everything for #contact page ------------------- */
+/* #contact Form Styles Apple glass */
 #contact form {
-    width: 90vw;
+    width: 65vw;
     max-width: 900px;
     margin: 20px auto;
-    padding: 40px;
+    padding: 40px 50px 40px 50px;
     background: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(240,240,255,0.12) 100%);
     border-radius: 18px;
     box-shadow: 0 0 24px rgba(31,38,135,0.12);
@@ -322,19 +378,25 @@ body.dark #contact form button:hover {
 }
 
 /* ------------------- Everything for social page ------------------- */
-.social-glass {
-    background: linear-gradient(120deg, rgba(30,30,40,0.7) 0%, rgba(60,60,80,0.5) 100%);
+.social {
+    background: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(240,240,255,0.12) 100%);
     backdrop-filter: blur(18px) saturate(180%);
     border-radius: 24px;
-    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.35);
+    box-shadow: 0 0 24px rgba(31,38,135,0.12);
     padding: 30px 40px 40px 40px;
     margin: 40px auto 0 auto;
     max-width: 550px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid rgba(255,255,255,0.18);
+}
+body.dark .social {
+    background: linear-gradient(120deg, rgba(30, 30, 40, 0.702) 0%, #3c3c5080 100%);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.35);
     border: 1px solid rgba(255,255,255,0.12);
 }
+
 .social-icons {
     display: flex;
     justify-content: center;
@@ -350,43 +412,72 @@ body.dark #contact form button:hover {
     border-radius: 50%;
     transition: box-shadow 0.2s, transform 0.2s;
 }
-.social-icons a i {
+
+.social-icons a i{
+    color: #007aff;
+    font-size: 70px;
+    filter: drop-shadow(0 2px 8px #043a75);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.2s;
+}
+body.dark .social-icons a i {
     font-size: 70px;
     color: #ffcc00;
     transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.2s;
     filter: drop-shadow(0 2px 8px rgba(255,204,0,0.3));
 }
-.social-icons a:hover i {
+
+
+.social-icons a:hover i{
     /* Randomized rotation direction for round icons */
+    box-shadow: 0 4px 24px #007aff55;
     transform: scale(1.70) rotate(-10deg);
-    box-shadow: 0 4px 16px #ffcc0088;
 }
+
+body.dark .social-icons a:hover i {
+    transform: scale(1.70) rotate(-10deg);
+    box-shadow: 0 4px 24px #ffcc0088;
+}
+
 .social-icons a:active i {
     transform: scale(1.00) rotate(10deg);
     box-shadow: 0 4px 16px #e7bb0deb;
 }
 
 .mechstrike-btn {
-    background: linear-gradient(120deg, #ffcc00 0%, #ffa500 100%);
-    color: #333;
+    color: #ffffff;
+    background: linear-gradient(120deg, #007BFF 0%, #0163cd 100%);
     font-weight: bold;
     font-size: 22px;
     padding: 14px 40px;
     border-radius: 10px;
     border: none;
-    box-shadow: 0 2px 10px #ffcc0055;
+    box-shadow: 0 2px 10px #3588e2;
     margin-top: 10px;
     cursor: pointer;
 }
+body.dark .mechstrike-btn {
+    background: linear-gradient(120deg, #ffcc00 0%, #ffa500 100%);
+    box-shadow: 0 2px 10px #ffcc0055;
+    color: #333;
+}
 .mechstrike-btn:hover {
+    background: linear-gradient(120deg, #0163cd 0%, #007BFF 100%);
+    box-shadow: 0 4px 18px #216af188;
+}
+body.dark .mechstrike-btn:hover {
     background: linear-gradient(120deg, #ffa500 0%, #ffcc00 100%);
     box-shadow: 0 4px 18px #ffcc0088;
 }
 
+/*--------------------Project---------------------*/
+
+
+
+
 /* ------------------- Other ------------------- */
 /* Section padding for all pages */
 .section {
-    padding-top: 150px;
+    padding-top: 130px;
 }
 
 /* Default link styles */
@@ -411,19 +502,21 @@ i {
     margin-right: 10px;
 }
 
-/* Footer */
+/* -------------Footer-----------------*/
 footer {
     background-color: rgba(255, 255, 255, 0.2);
+    color: #2e2e2e;
     background: linear-gradient(120deg, rgba(255,255,255,0.7) 0%, rgba(240,240,255,0.6) 100%);
     backdrop-filter: blur(14px) saturate(180%);
     padding: 10px;
     text-align: center;
+    align-items: center;
     width: 70%;
     box-shadow: 0 -2px 16px rgba(31,38,135,0.10);
     border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 16px 16px 0 0;
+    border-radius: 16px;
     position: fixed;
-    bottom: 0;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
@@ -434,6 +527,7 @@ body.dark footer {
     background: linear-gradient(120deg, rgba(30,30,40,0.7) 0%, rgba(60,60,80,0.6) 100%);
     box-shadow: 0 -2px 16px rgba(0,0,0,0.25);
     border: 1px solid rgba(255,255,255,0.08);
+    color: #000000;
 }
 
 /* Slide down animation */
@@ -442,11 +536,26 @@ footer.hide {
     opacity: 0;
     transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
 }
+footer .icon :hover{
+    transform: scale(1.05);
+}
+
 /* Slide up animation */
 footer.show {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
     transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .footer{
+        width: 50%; 
+        right: auto;
+        padding: 0px 0px 5px 0px;
+        bottom: 20px;
+        position: fixed;
+        border-radius:16px;
+    }
 }
 
 /* Theme Switch Animation */
@@ -465,6 +574,31 @@ footer.show {
     }
 }
 
-/* For mobile view*/
-/* End of mobile view*/
+/* Modern Apple-like scrollbars */
+body, .main-content, .section {
+    scrollbar-width: thin;
+    scrollbar-color: #b3b3b3 #e0e0e0; /* thumb color, track color */
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch; /* iOS momentum */
+}
+
+/* Chrome/Edge/Safari custom scrollbar */
+body::-webkit-scrollbar, .main-content::-webkit-scrollbar, .section::-webkit-scrollbar {
+    width: 8px;
+    background: #e0e0e0;
+}
+body::-webkit-scrollbar-thumb, .main-content::-webkit-scrollbar-thumb, .section::-webkit-scrollbar-thumb {
+    background: #b3b3b3;
+    border-radius: 8px;
+}
+body::-webkit-scrollbar-thumb:hover, .main-content::-webkit-scrollbar-thumb:hover, .section::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* Enable bounce/overscroll effect on supported browsers */
+body, .main-content, .section {
+    overscroll-behavior-y: contain;
+    /* For iOS Safari and some modern browsers */
+    -webkit-overflow-scrolling: touch;
+}
 
